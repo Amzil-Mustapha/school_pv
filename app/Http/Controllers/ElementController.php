@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Element;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ElementController extends Controller
 {

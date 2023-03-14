@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
+
 
 use App\Models\Aspeet;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class AspeetController extends Controller
 {
@@ -13,6 +14,9 @@ class AspeetController extends Controller
     public function index()
     {
         //
+        // return Aspeet::all()->where("id",1)->first()->element;
+
+       
     }
 
     /**

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('donnees', function (Blueprint $table) {
             $table->id();
             $table->integer('value');
-            $table->foreignId('filiere_id')->constrained();
-            $table->foreignId('element_id')->constrained();
+            $table->foreignId('filiere_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('element_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
