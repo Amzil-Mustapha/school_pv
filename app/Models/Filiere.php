@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Filiere extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        "code_filiere",
+        "name",
+        "annee"
+    ];
+    
+    
+    public function donnee(){
+        return $this->hasMany(Donnee::class);
+    }
+
+    public function comment(){
+        return $this->hasMany(Comments::class);
+    }
 }

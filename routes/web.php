@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AspeetController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//route home page
 Route::get('/', function () {
     return view('home');
+})->middleware("loginMiddleware");
+
+//route login page
+Route::get("/login",function(){
+    return view("pages.login");
+})->name("login");
+
+//route upload page
+Route::get("/upload",function(){
+    return view("pages.upload");
 });
+
+//controller login when user logs in
+Route::post("/Onlogin",[UserController::class,"login"])->name("Onlogin");
+Route::get("/Onlogout",[UserController::class,"logout"])->name("Onlogout");
