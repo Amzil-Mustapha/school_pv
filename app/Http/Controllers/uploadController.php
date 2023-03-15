@@ -23,10 +23,14 @@ class uploadController extends Controller
 
         $input = [
             "file_import"=>$request->file_import,
+            "convenable"=>$request->convenable,
+            "moiyen"=>$request->moiyen,
         ];
 
         Validator::validate($input,[
             "file_import"=>["required","mimes:xlsx,xls"],
+            "moiyen"=>["required"],
+            "convenable"=>["required"],
         ]);
         
         if(DataTable::all()->first()){
@@ -38,11 +42,14 @@ class uploadController extends Controller
         
         Excel::import(new dataImport, $request->file("file_import")->store("temp"));
         $operationOBJ = new OperationController();
-        dd($operationOBJ->getNmbreTotalGroup("GC_GE_TS","1"));
+        // $operationOBJ->getNmbreTotalGroup("GC_GE_TS","1"); //
+        //  $operationOBJ->getNombreTotalGroupesValides("GC_GE_TS","1");
+         return $operationOBJ->getNombreTotalGroupesTauxConvenable("GC_GE_TS","1",$request->convenable);
+
+        // return "nice";
 
         
-
-        // return "niiice";
+        
         
         
     }

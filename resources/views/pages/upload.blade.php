@@ -12,6 +12,14 @@
 
     <form action="{{Route("Onupload")}}" method="post" enctype="multipart/form-data">
         @csrf
+        moiyen : <input type="number" name="moiyen" value="{{old("moiyen")}}">
+        @error('moiyen')
+            {{$message}}
+        @enderror <br> <br>
+        convenable : <input type="number" name="convenable" value="{{old("faible")}}">
+        @error('faible')
+            {{$message}}
+        @enderror <br> <br>
         <input type="file"  name="file_import">
         @error('file_import')
             {{$message}}
