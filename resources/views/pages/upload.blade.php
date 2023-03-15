@@ -7,6 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    upload page
+    upload page 
+
+
+    <form action="{{Route("Onupload")}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file"  name="file_import">
+        @error('file_import')
+            {{$message}}
+        @enderror
+        @error('extension')
+            {{$message}}
+        @enderror
+
+        <button>upload</button>
+    </form>
 </body>
 </html>
