@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //route home page
 Route::get('/', function () {
     return view('home');
-})->middleware("loginMiddleware");
+});
 
 //route login page
 Route::get("/login",function(){
@@ -35,5 +35,5 @@ Route::get("/upload",function(){
 Route::post("/Onlogin",[UserController::class,"login"])->name("Onlogin");
 Route::get("/Onlogout",[UserController::class,"logout"])->name("Onlogout");
 
-//controller upload when user upload a file 
+//controller upload when user upload a file
 Route::post("/Onupload",[uploadController::class,"Onupload"])->name("Onupload");

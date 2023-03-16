@@ -18,8 +18,7 @@ class uploadController extends Controller
 {
     //
 
-
-    public function Onupload(Request $request)
+    public function Onupload(Request $request): string
     {
 
         $input = [
@@ -54,6 +53,6 @@ class uploadController extends Controller
             $operationOBJ->getTotalEFM_local_regional($filier->code_filiere, $filier->annee);
         }
 
-        return "nice";
+       return view('home');
     }
 }
