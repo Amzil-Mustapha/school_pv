@@ -53,6 +53,6 @@ class uploadController extends Controller
             $operationOBJ->getTotalEFM_local_regional($filier->code_filiere, $filier->annee);
         }
 
-       return view('home');
+       return redirect("/");
     }
 }

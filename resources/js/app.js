@@ -1,6 +1,6 @@
 import './bootstrap';
 
-let SelectedYear = '1';
+let SelectedYear = '12';
 
 changeOption();
 document.getElementById("selectYear").addEventListener("change", (e) => {
@@ -11,7 +11,7 @@ document.getElementById("selectYear").addEventListener("change", (e) => {
 function changeOption() {
     if (SelectedYear === '1') {
         document.getElementById("filierSelect").innerHTML = `
-    <option value="default">La Somme De Toutes Les Filière 1A</option>
+    <option value="all_a1" >La Somme De Toutes Les Filière 1A</option>
     <option value="GC_GE_TS">Gestion des Entreprises</option>
     <option value="DIA_ID_TS">Infrastructure Digitale</option>
     <option value="AG_IF_TS">Technicien Spécialisé en Production Graphique</option>
@@ -21,7 +21,7 @@ function changeOption() {
     `;
     } else if (SelectedYear === '2') {
         document.getElementById("filierSelect").innerHTML = `
-        <option value="default">La Somme De Toutes Les Filière 2A</option>
+        <option value="all_a2" >La Somme De Toutes Les Filière 2A</option>
 
             <option value="AG_IF_TS">
              Technicien Spécialisé en Production Graphique
@@ -108,7 +108,7 @@ function changeOption() {
     `;
     }else {
         document.getElementById("filierSelect").innerHTML =`
-        <option value="default">La Somme De Toutes Les Filière 1A & 2A</option>
+        <option value="all">La Somme De Toutes Les Filière 1A & 2A</option>
         `
     }
 }
