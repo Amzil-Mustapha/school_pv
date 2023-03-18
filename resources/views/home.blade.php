@@ -18,7 +18,14 @@
         <button type="submit">SELECT</button>
     </form>
    
-
+  
+        @if($year = session("selected_year"))
+            <h1>annee:{{session("selected_year")}} filiere: {{session("selected_filier")}}</h1>
+        @else
+            <h1>annee:all filiere: all</h1>
+        @endif
+   
+    <h3></h3>
     <table class="border border-slate-900">
         <thead >
             <tr >
