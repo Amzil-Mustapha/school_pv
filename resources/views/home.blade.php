@@ -1,4 +1,9 @@
 @include('layouts.header')
+
+
+
+
+
 <main class="flex-1">
     @if (session("type")=="directeur")
         <button>
@@ -32,28 +37,44 @@
                 <th class="border border-slate-900 w">Aspeets à Trailer</th>
                 <th class="border border-slate-900">Eléments de traitement</th>
                 <th class="border border-slate-900">les données</th>
-                <th class="border border-slate-900">commentaires</th>
+
+                @if ($comment_display)
+                    <th class="border border-slate-900">commentaires</th>
+                @endif
+
             </tr>
         </thead>
         <tbody>
             @foreach ($data as $aspeet_element)
                 <tr class="border border-slate-900">
-                    <td class="border border-slate-900" rowspan="{{count($aspeet_element["elements"])+1}}">{{$aspeet_element["aspeet"]->value}}</td>
+                    <td class="border border-slate-900" 
+
+                    rowspan="
+                        {{-- {{ $comment_display ?count($aspeet_element["elements"])+1 : count($aspeet_element["elements"]) }} --}}
+                        {{count($aspeet_element["elements"])+1}}
+                    ">
+
+                    {{$aspeet_element["aspeet"]->value}}</td>
                 </tr>
+
                 @foreach ($aspeet_element["elements"] as $element)
                     <tr class="border border-slate-900">
                         <td class="border border-slate-900">{{$element->name}}</td>
                         <td class="border border-slate-900"><input type="text" value="{{$element->value?$element->value:""}}"></td>
-                        <td class="border border-slate-900"><input type="text" value="{{$element->comment?$element->comment:""}}"></td>
+
+                        @if ($comment_display)
+                        <td>
+                            <button>
+                                open
+                            </button>
+                        </td>
+                        @endif
                     </tr>
                 @endforeach
             @endforeach
         </tbody>
     </table>
 
-<script>
-    
-    
-</script>
+
 </main>
 @include('layouts.footer')

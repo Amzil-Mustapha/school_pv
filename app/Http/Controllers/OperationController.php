@@ -19,7 +19,7 @@ class OperationController extends Controller
     {
         if ($code_filier == 'all' and $annee == 12) {
             $NmbreTotalGroup = DataTable::distinct("groupe")->count();
-        } elseif ($code_filier == 'all' and $annee != 12) {
+        } elseif ($code_filier != 'all' and $annee != 12) {
             $NmbreTotalGroup = DataTable::where("annee_formation", $annee)->distinct("groupe")->count();
         } else {
             $NmbreTotalGroup = DataTable::where("code_filiere", $code_filier)->where("annee_formation", $annee)->distinct("groupe")->count();
@@ -52,7 +52,7 @@ class OperationController extends Controller
         $count = 0;
         if ($code_filier == 'all' and $annee == 12) {
             $allGroupDistinct = DB::table("data_tables")->distinct("groupe")->get("groupe");
-        } elseif ($code_filier == 'all' and $annee != 12) {
+        } elseif ($code_filier != 'all' and $annee != 12) {
             $allGroupDistinct = DB::table("data_tables")->where("annee_formation", $annee)->distinct("groupe")->get("groupe");
         } else {
             $allGroupDistinct = DB::table("data_tables")->where("code_filiere", $code_filier)->where("annee_formation", $annee)->distinct("groupe")->get("groupe");
@@ -61,7 +61,7 @@ class OperationController extends Controller
             if ($code_filier == 'all' and $annee == 12) {
                 $numberModel = DB::table("data_tables")->where("groupe", $group->groupe)->count();
                 $numberModelVlide = DB::table("data_tables")->where("groupe", $group->groupe)->where("Taux_Realisation_P_syn", ">=", 95)->count("groupe");
-            } elseif ($code_filier == 'all' and $annee != 12) {
+            } elseif ($code_filier != 'all' and $annee != 12) {
                 $numberModel = DB::table("data_tables")->where("annee_formation", $annee)->where("groupe", $group->groupe)->count();
                 $numberModelVlide = DB::table("data_tables")->where("annee_formation", $annee)->where("groupe", $group->groupe)->where("Taux_Realisation_P_syn", ">=", 95)->count("groupe");
             } else {
@@ -108,7 +108,7 @@ class OperationController extends Controller
 
         if ($code_filier == 'all' and $annee == 12) {
             $allGroupWithTaux = DB::table("data_tables")->selectRaw("groupe,CEIL((sum(mh_realisee_globale) /sum(MH_Affectee_Globale_P_SYN))*100) as taux")->groupBy("groupe")->get();
-        } elseif ($code_filier == 'all' and $annee != 12) {
+        } elseif ($code_filier != 'all' and $annee != 12) {
             $allGroupWithTaux = DB::table("data_tables")->selectRaw("groupe,CEIL((sum(mh_realisee_globale) /sum(MH_Affectee_Globale_P_SYN))*100) as taux")->where("annee_formation", $annee)->groupBy("groupe")->get();
         } else {
             $allGroupWithTaux = DB::table("data_tables")->selectRaw("groupe,CEIL((sum(mh_realisee_globale) /sum(MH_Affectee_Globale_P_SYN))*100) as taux")->where("code_filiere", $code_filier)->where("annee_formation", $annee)->groupBy("groupe")->get();
@@ -153,7 +153,7 @@ class OperationController extends Controller
 
         if ($code_filier == 'all' and $annee == 12) {
             $CountModule = DataTable::all()->count("module");
-        } elseif ($code_filier == 'all' and $annee != 12) {
+        } elseif ($code_filier != 'all' and $annee != 12) {
             $CountModule = DataTable::all()->where("annee_formation", $annee)->count("module");
         } else {
             $CountModule = DataTable::all()->where("code_filiere", $code_filier)->where("annee_formation", $annee)->count("module");
@@ -181,7 +181,7 @@ class OperationController extends Controller
 
         if ($code_filier == 'all' and $annee == 12) {
             $CountModuleAchever = DataTable::all()->where("Taux_Realisation_P_syn", ">=", 95)->count("module");
-        } elseif ($code_filier == 'all' and $annee != 12) {
+        } elseif ($code_filier != 'all' and $annee != 12) {
             $CountModuleAchever = DataTable::all()->where("annee_formation", $annee)->where("Taux_Realisation_P_syn", ">=", 95)->count("module");
         } else {
             $CountModuleAchever = DataTable::all()->where("code_filiere", $code_filier)->where("annee_formation", $annee)->where("Taux_Realisation_P_syn", ">=", 95)->count("module");
@@ -226,7 +226,7 @@ class OperationController extends Controller
             $CountEFMRegionalPrevues = DataTable::all()->where("Regional", "O")->where("Seance_EFM", "Non")->count();
             $CountEFMLocalesréalisées = DataTable::all()->where("Regional", "N")->where("Seance_EFM", "Oui")->count();
             $CountEFMRegionalréalisées = DataTable::all()->where("Regional", "O")->where("Seance_EFM", "Oui")->count();
-        } elseif ($code_filier == 'all' and $annee != 12) {
+        } elseif ($code_filier != 'all' and $annee != 12) {
             $CountEFMLocalesPrevues = DataTable::all()->where("annee_formation", $annee)->where("Regional", "N")->where("Seance_EFM", "Non")->count();
             $CountEFMRegionalPrevues = DataTable::all()->where("annee_formation", $annee)->where("Regional", "O")->where("Seance_EFM", "Non")->count();
             $CountEFMLocalesréalisées = DataTable::all()->where("annee_formation", $annee)->where("Regional", "N")->where("Seance_EFM", "Oui")->count();
