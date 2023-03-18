@@ -25,7 +25,7 @@
             <h1>annee:all filiere: all</h1>
         @endif
    
-    <br><button><a href="{{Route("test")}}">test</a></button>
+    
     <table class="border border-slate-900">
         <thead >
             <tr >
