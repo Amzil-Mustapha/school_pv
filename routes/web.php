@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AspeetController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\uploadController;
 use App\Http\Controllers\UserController;
@@ -37,5 +38,10 @@ Route::get("/Onlogout",[UserController::class,"logout"])->name("Onlogout");
 
 //controller upload when user upload a file
 Route::post("/Onupload",[uploadController::class,"Onupload"])->name("Onupload");
+
+//resource controller of comment
+Route::resource('/Comments',CommentsController::class)->names([
+    
+]);
 
 

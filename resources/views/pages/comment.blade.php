@@ -1,0 +1,4 @@
+@extends('header')
+
+
+@extends('footer')
