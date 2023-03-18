@@ -4,6 +4,7 @@ use App\Http\Controllers\AspeetController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\uploadController;
 use App\Http\Controllers\UserController;
+use App\Models\Comments;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,15 @@ Route::get("/Onlogout",[UserController::class,"logout"])->name("Onlogout");
 
 //controller upload when user upload a file
 Route::post("/Onupload",[uploadController::class,"Onupload"])->name("Onupload");
+
+Route::get("/test",function(){
+    $comment = new Comments();
+    $comment->value = json_encode([
+        ["id"=>1,"value"=>"comment1"],
+        ["id"=>2,"value"=>"comment2"],
+        ["id"=>3,"value"=>"comment3"],
+    ]);
+    $comment->element_id = 1;
+    $comment->filiere_id = 26;
+    $comment->save();
+})->name("test");
