@@ -21,6 +21,7 @@ class UserController extends Controller
         $check = User::all()->where('email',$request->input("email"))->where("password",$request->password)->first();
 
         if($check){
+           
             session([
                 "type"=>$check->type,
                 "id"=>$check->id,

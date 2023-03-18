@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('value');
+            $table->json('value');
             $table->foreignId('filiere_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('element_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

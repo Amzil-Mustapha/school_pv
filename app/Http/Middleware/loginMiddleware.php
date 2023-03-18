@@ -15,19 +15,13 @@ class LoginMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(session("type")){
+        if (session("type")) {
 
-            
-            if(session("type")=="directeur"){
-                return redirect("upload");
-            }else{
-                return $next($request);
-            }
 
-        }else{
-           return redirect("login");
+
+            return $next($request);
+        } else {
+            return redirect("login");
         }
     }
-
-    
 }

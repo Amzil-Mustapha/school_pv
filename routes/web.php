@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AspeetController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\uploadController;
 use App\Http\Controllers\UserController;
+use App\Models\Comments;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //route home page
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class,"GetDataAndDisplayIt"])->middleware("loginMiddleware")->name("home");
 
 //route login page
 Route::get("/login",function(){
@@ -29,7 +29,7 @@ Route::get("/login",function(){
 //route upload page
 Route::get("/upload",function(){
     return view("pages.upload");
-})->middleware("uploadMiddleware");
+})->middleware("uploadMiddleware")->name("upload");
 
 //controller login when user logs in
 Route::post("/Onlogin",[UserController::class,"login"])->name("Onlogin");
@@ -37,3 +37,5 @@ Route::get("/Onlogout",[UserController::class,"logout"])->name("Onlogout");
 
 //controller upload when user upload a file
 Route::post("/Onupload",[uploadController::class,"Onupload"])->name("Onupload");
+
+
